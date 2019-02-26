@@ -1,0 +1,69 @@
+﻿@model Pizzatorium_App.Models.Pizza
+
+@{
+    ViewBag.Title = "Design";
+}
+
+<h2>Please Design your Pizza</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal, container">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="col-sm-4" style="margin-top:20px">
+                <h4>Select a Pizza base size</h4>
+                <div class="radio-inline">
+                    @foreach (var item in ViewBag.Size)
+                    {
+                        <input type="radio" name="checkedSize" value="@item.SizeName" checked="checked" /> @item.SizeName <span> R</span>@item.SizePrice <br />
+                    }
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <h4>Choose Ingredients</h4>
+                    <div class="checkbox-inline">
+                        @foreach (var item in ViewBag.Ingredients)
+                        {
+                            if (item.IngredientName == "")
+                            {
+                                <input class="hide" type="checkbox" name="IngredientSelection" value="@item.IngredientName" checked="checked" />
+                            }
+
+                            else
+                            {
+                                <input type="checkbox" name="IngredientSelection" value="@item.IngredientName" /><span>@item.IngredientName</span> <span> R</span>@item.IngredientPrice <br />
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Update" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+}
+
+<div class="row">
+    @Html.ActionLink("Cancel", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

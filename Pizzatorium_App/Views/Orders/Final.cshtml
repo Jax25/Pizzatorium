@@ -1,0 +1,95 @@
+﻿@model Pizzatorium_App.Models.Pizza
+
+@{
+    ViewBag.Title = "Final";
+}
+
+<h2>Payment</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-4" style="margin-top:25px">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Order.Price):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Order.Price)
+                    </dd>
+
+                    <dt>
+                        Pizza Size:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Size.SizeName)
+                    </dd>
+                    <dd>
+
+                    </dd>
+                    <dt>
+
+                    </dt>
+
+                    <dt>
+                        Selected Ingredients:
+                    </dt>
+
+                    @foreach (var item in ViewBag.Ingredients)
+                    {
+
+
+                        <dd>
+                            @item
+                        </dd>
+                    }
+
+                </dl>
+
+
+            </div>
+
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label>Select a Payment Type:</label>
+                    <select name="payments">
+                        <option value="Cash">Cash</option>
+                        <option value="Card">Card</option>
+                        <option value="Eft">Eft</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="margin-top:100px">
+                    <input type="submit" value="Order" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Redesign", "Edit", new { id = Model.Id })
+    <br />
+    <br />
+    @Html.ActionLink("Cancel", "Index") 
+
+    
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

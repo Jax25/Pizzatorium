@@ -1,0 +1,66 @@
+﻿@using Pizzatorium_App.Models
+@model Pizzatorium_App.Models.Pizza
+
+@{
+    ViewBag.Title = "ThankYou";
+}
+
+<h2>Thank You</h2>
+<div>
+    <div>
+        <h4>@Model.Order.Customer.Name for your Order</h4>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Delivery Address:
+            </dt>
+            <dd>
+                @Model.Order.Customer.Address , @Model.Order.Customer.Area.Name
+            </dd>
+
+            <dt>
+                Payment Method: 
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Order.PaymentType.Name)
+            </dd>
+
+            <dt>
+                Your Pizza:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Order.Customer.FavoritePizza)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Order.Price)
+            </dt>
+
+            <dd>
+                <Span>R</Span>@Html.DisplayFor(model => model.Order.Price)
+            </dd>
+
+            <dt>
+                Delivery Driver:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Order.Customer.Area.DeliveryGuy.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <div>
+        @Html.Image(@Model.Order.Customer.Area.DeliveryGuy.Image, @Model.Order.Customer.Area.DeliveryGuy.Name, "200")
+    </div>
+</div>
+<div style="margin-top:20px">
+    <p>
+
+        @Html.ActionLink("Home", "Index")
+    </p>
+</div>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Pizzatorium_App.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/main.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<header class="special">
+    <h1> Welcome to the pizzatorium</h1>
+</header>
+
+<div class="highlights">
+    <section>
+        <div class="content">
+            <header>
+                <p>Is it your first time visiting us?</p>
+            </header>
+            <p>Register here</p>
+            <p>@Html.ActionLink("Register", "Register", "Orders")</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <header>
+                <p>If not, Welcome back</p>
+            </header>
+            <p>Login here</p>
+            <p>@Html.ActionLink("Login", "Login", "Orders")</p>
+        </div>
+    </section>
+</div>
+
