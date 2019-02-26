@@ -23,6 +23,7 @@ namespace Pizzatorium_App.Controllers
             }
 
             return View();
+
         }
 
         public ActionResult Login()
